@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Nunito_Sans } from 'next/font/google'
 import './globals.css'
+import { ToDoProvider } from './context/ToDoContext'
 
 const nunito = Nunito_Sans({ subsets: ['latin'] })
 
@@ -16,7 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body className={nunito.className}>{children}</body>
+      <body className={nunito.className}>
+        <ToDoProvider>{children}</ToDoProvider>
+      </body>
     </html>
   )
 }

@@ -1,9 +1,17 @@
+'use client'
+
+import TodoList from './components/ToDoList'
+import TodoForm from './components/ToDoForm'
 import styles from './page.module.css'
 
-export default function Home() {
+const Home = () => {
   return (
-    <main className={styles.main}>
-      <h1>ToDo</h1>
+    <main className={`${styles.main}`}>
+      <h1>Lista de Tarefas</h1>
+      <TodoForm />
+      <TodoList />
     </main>
   )
 }
+
+export default Home
