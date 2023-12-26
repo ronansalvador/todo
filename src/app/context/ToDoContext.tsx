@@ -1,5 +1,5 @@
 'use client'
-import React, { createContext, useContext, useState } from 'react'
+import React, { createContext, useContext, useState, useEffect } from 'react'
 
 interface ToDo {
   id: number
@@ -22,7 +22,23 @@ const ToDoContext = createContext<ToDoContextProps>({
 })
 
 export const ToDoProvider = ({ children }: { children: React.ReactNode }) => {
-  const [todos, setTodos] = useState<ToDo[]>([])
+  const savedToDosString = localStorage.getItem('todos')
+  const savedToDos = savedToDosString ? JSON.parse(savedToDosString) : []
+  const [todos, setTodos] = useState<ToDo[]>(savedToDos)
+
+  // Carregar os todos do localStorage quando o componente for montado
+  useEffect(() => {
+    const storedTodos = localStorage.getItem('todos')
+    if (storedTodos) {
+      console.log('tem algum item?')
+      setTodos(JSON.parse(storedTodos))
+    }
+  }, [])
+
+  // Salvar os todos no localStorage sempre que a lista de todos for atualizada
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
 
   const addTodo = (text: string) => {
     const newTodo: ToDo = {
@@ -31,6 +47,7 @@ export const ToDoProvider = ({ children }: { children: React.ReactNode }) => {
       completed: false,
     }
     setTodos([...todos, newTodo])
+    localStorage.setItem('todos', JSON.stringify(todos))
   }
 
   const toggleTodo = (id: number) => {
