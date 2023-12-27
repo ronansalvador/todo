@@ -12,3 +12,21 @@
 .main p {
   color: white;
 }
+
+.count_tasks {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 50rem;
+}
+
+.count_tasks p {
+  font: 0.75rem;
+  font-weight: 600;
+}
+
+.count_tasks span {
+  background-color: var(--black-500);
+  padding: 2px 5px;
+  border-radius: 40%;
+}
