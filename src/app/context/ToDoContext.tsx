@@ -24,22 +24,12 @@ const ToDoContext = createContext<ToDoContextProps>({
 })
 
 export const ToDoProvider = ({ children }: { children: React.ReactNode }) => {
-  const savedToDosString = localStorage.getItem('todos')
-  const savedToDos = savedToDosString ? JSON.parse(savedToDosString) : []
-  const [todos, setTodos] = useState<ToDo[]>(savedToDos)
-
-  // Carregar os todos do localStorage quando o componente for montado
-  useEffect(() => {
-    const storedTodos = localStorage.getItem('todos')
-    if (storedTodos) {
-      setTodos(JSON.parse(storedTodos))
-    }
-  }, [])
+  const [todos, setTodos] = useState<ToDo[]>([])
 
   // Salvar os todos no localStorage sempre que a lista de todos for atualizada
-  useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos))
-  }, [todos])
+  // useEffect(() => {
+  //   localStorage.setItem('todos', JSON.stringify(todos))
+  // }, [todos])
 
   const addTodo = (text: string) => {
     const newTodo: ToDo = {
@@ -47,22 +37,31 @@ export const ToDoProvider = ({ children }: { children: React.ReactNode }) => {
       text,
       completed: false,
     }
-    setTodos([...todos, newTodo])
-    localStorage.setItem('todos', JSON.stringify(todos))
+
+    setTodos((prevTodos) => {
+      const updatedTodos = [...prevTodos, newTodo]
+      localStorage.setItem('todos', JSON.stringify(updatedTodos))
+      return updatedTodos
+    })
   }
 
   const toggleTodo = (id: number) => {
-    const updatedTodos = todos.map((todo) =>
-      todo.id === id ? { ...todo, completed: !todo.completed } : todo,
-    )
-    setTodos(updatedTodos)
+    setTodos((prevTodos) => {
+      const updatedTodos = prevTodos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo,
+      )
+      localStorage.setItem('todos', JSON.stringify(updatedTodos))
+      return updatedTodos
+    })
   }
 
   const deleteTodo = (id: number) => {
-    const updatedTodos = todos.filter((todo) => todo.id !== id)
-    setTodos(updatedTodos)
+    setTodos((prevTodos) => {
+      const updatedTodos = prevTodos.filter((todo) => todo.id !== id)
+      localStorage.setItem('todos', JSON.stringify(updatedTodos))
+      return updatedTodos
+    })
   }
-
   return (
     <ToDoContext.Provider
       value={{ todos, addTodo, toggleTodo, deleteTodo, setTodos }}
