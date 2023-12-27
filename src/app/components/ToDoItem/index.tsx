@@ -28,13 +28,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
         onChange={handleToggle}
         className={styles.check}
       />
-      {/* {!todo.completed ? (
-        <button onClick={handleToggle}>
-          <Image src={done} alt="feito" className={styles.done}></Image>
-        </button>
-      ) : (
-        <button onClick={handleToggle}>Fazer</button>
-      )} */}
+
       <span
         className={styles.description}
         style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
