@@ -9,6 +9,7 @@ interface ToDo {
 
 interface ToDoContextProps {
   todos: ToDo[]
+  setTodos: (todos: ToDo[]) => void
   addTodo: (text: string) => void
   toggleTodo: (id: number) => void
   deleteTodo: (id: number) => void
@@ -16,17 +17,14 @@ interface ToDoContextProps {
 
 const ToDoContext = createContext<ToDoContextProps>({
   todos: [],
+  setTodos: () => {},
   addTodo: () => {},
   toggleTodo: () => {},
   deleteTodo: () => {},
 })
 
 export const ToDoProvider = ({ children }: { children: React.ReactNode }) => {
-  const isLocalStorageAvailable =
-    typeof window !== 'undefined' && window.localStorage
-  const savedToDosString = isLocalStorageAvailable
-    ? localStorage.getItem('todos')
-    : null
+  const savedToDosString = localStorage.getItem('todos')
   const savedToDos = savedToDosString ? JSON.parse(savedToDosString) : []
   const [todos, setTodos] = useState<ToDo[]>(savedToDos)
 
@@ -66,7 +64,9 @@ export const ToDoProvider = ({ children }: { children: React.ReactNode }) => {
   }
 
   return (
-    <ToDoContext.Provider value={{ todos, addTodo, toggleTodo, deleteTodo }}>
+    <ToDoContext.Provider
+      value={{ todos, addTodo, toggleTodo, deleteTodo, setTodos }}
+    >
       {children}
     </ToDoContext.Provider>
   )
