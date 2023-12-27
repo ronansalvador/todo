@@ -1,4 +1,5 @@
 import { useToDo } from '@/app/context/ToDoContext'
+import styles from './styles.module.css'
 
 interface TodoItemProps {
   todo: {
@@ -19,13 +20,19 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
   }
 
   return (
-    <div>
-      <input type="checkbox" checked={todo.completed} onChange={handleToggle} />
+    <div className={styles.task}>
+      {/* <input type="checkbox" checked={todo.completed} onChange={handleToggle} /> */}
       <span
+        className={styles.description}
         style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
       >
         {todo.text}
       </span>
+      {!todo.completed ? (
+        <button onClick={handleToggle}>Done</button>
+      ) : (
+        <button onClick={handleToggle}>Fazer</button>
+      )}
       <button onClick={handleDelete}>Delete</button>
     </div>
   )

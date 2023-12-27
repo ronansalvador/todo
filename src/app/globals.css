@@ -1,3 +1,8 @@
+:root {
+  --color-1: #e7f7ff;
+  --neutral-dark: #181a1a;
+}
+
 *,
 *::before,
 *::after {

@@ -1,6 +1,7 @@
 import React from 'react'
 import TodoItem from '../ToDoItem'
 import { useToDo } from '@/app/context/ToDoContext'
+import styles from './styles.module.css'
 
 interface Todo {
   id: number
@@ -11,7 +12,7 @@ interface Todo {
 const TodoList = () => {
   const { todos } = useToDo()
   return (
-    <div>
+    <div className={styles.list}>
       {todos.map((todo) => (
         <TodoItem key={todo.id} todo={todo} />
       ))}
