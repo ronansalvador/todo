@@ -1,6 +1,6 @@
 # Todo List | Lista de tarefas
 
-Neste projeto, você encontra uma aplicação para contorlar sua lista de tarefas desenvolvidado com Next.js, TypeScript e CSS modules.
+Neste projeto, você encontra uma aplicação para controlar sua lista de tarefas desenvolvidado com Next.js, TypeScript e CSS modules.
 
 ## Instalação
 
