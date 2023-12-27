@@ -1,9 +1,11 @@
 :root {
-  --black: #1a1a1a;
-  --black-500: #262626;
-  --neutral-green: #005c5c;
-  --light-green: #7b9090;
-  --neon: #00ff00;
+  --dark-charcoal: #1a1a1a; /* Carvão Escuro */
+  --charcoal: #262626; /* Carvão */
+  --deep-sea-green: #005c5c; /* Verde Mar Profundo */
+  --light-sea-green: #7b9090; /* Verde Mar Claro */
+  --neon-green: #00ff00; /* Verde Neon */
+  --aquamarine: #7fffd4;
+  --red: #ff0000;
 }
 
 *,

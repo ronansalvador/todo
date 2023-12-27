@@ -21,7 +21,11 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
   }
 
   return (
-    <div className={styles.task}>
+    <div
+      className={`${styles.task} ${
+        todo.completed ? `${styles.completed}` : ''
+      }`}
+    >
       <input
         type="checkbox"
         checked={todo.completed}

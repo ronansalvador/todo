@@ -4,7 +4,7 @@
   padding: 1.5rem;
   width: 100%;
   max-width: 50rem;
-  background-color: var(--black-500);
+  background-color: var(--charcoal);
   margin-inline: auto;
   border-radius: 0.5rem;
 }
@@ -23,7 +23,7 @@
   width: var(--size);
   height: var(--size);
   appearance: none;
-  border: 2px solid var(--light-green);
+  border: 2px solid var(--light-sea-green);
   border-radius: 50%;
   background-color: transparent;
   outline: none;
@@ -31,14 +31,18 @@
 }
 
 .check:checked {
-  background-color: var(--neon);
+  background-color: var(--neon-green);
 }
 
 .delete {
-  color: #ff0000;
+  color: var(--red);
   cursor: pointer;
 }
 
 .delete:hover {
   scale: 1.2;
+}
+
+.completed {
+  background-color: var(--deep-sea-green);
 }

@@ -7,7 +7,7 @@
 }
 
 .form input {
-  background-color: var(--neutral-green);
+  background-color: var(--deep-sea-green);
   font-size: 1rem;
   border: none;
   outline: none;
@@ -15,13 +15,13 @@
   /* border-top-left-radius: 1rem;
   border-bottom-left-radius: 1rem; */
   padding: 0.625rem;
-  background-color: var(--light-green);
-  color: var(--black);
+  background-color: var(--light-sea-green);
+  color: var(--dark-charcoal);
   flex: 1;
 }
 
 .form input::placeholder {
-  color: var(--black);
+  color: var(--dark-charcoal);
 }
 
 .form button {
@@ -34,15 +34,15 @@
   min-width: 100px;
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
   cursor: pointer;
-  background-color: #7fffd4;
-  color: var(--black);
+  background-color: var(--aquamarine);
+  color: var(--dark-charcoal);
   width: 100%;
   font-weight: 600;
 }
 
 .form button:hover {
-  background-color: var(--neon);
-  color: var(--black);
+  background-color: var(--deep-sea-green);
+  color: white;
 }
 
 @media (min-width: 48em) {
