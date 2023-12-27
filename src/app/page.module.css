@@ -5,5 +5,10 @@
   align-items: center;
   padding-block: 2rem;
   min-height: 100vh;
-  background-color: var(--color-1);
+  background-color: var(--black);
+}
+
+.main h1,
+.main p {
+  color: white;
 }

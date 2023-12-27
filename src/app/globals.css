@@ -1,6 +1,9 @@
 :root {
-  --color-1: #e7f7ff;
-  --neutral-dark: #181a1a;
+  --black: #1a1a1a;
+  --black-500: #262626;
+  --neutral-green: #005c5c;
+  --light-green: #7b9090;
+  --neon: #00ff00;
 }
 
 *,
@@ -56,8 +59,6 @@ div {
   text-size-adjust: auto;
   overflow-wrap: break-word;
   vertical-align: baseline;
-  color: var(--neutral-black);
-  /*Retirar o color daqui*/
 }
 
 a {

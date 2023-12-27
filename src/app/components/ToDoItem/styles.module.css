@@ -1,10 +1,44 @@
 .task {
-  background-color: teal;
   display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 50rem;
+  background-color: var(--black-500);
+  margin-inline: auto;
+  border-radius: 0.5rem;
 }
 
 .description {
   flex: 1;
   padding-inline: 1rem;
   text-align: center;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.check {
+  --size: 1.5rem;
+  width: var(--size);
+  height: var(--size);
+  appearance: none;
+  border: 2px solid var(--light-green);
+  border-radius: 50%;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+.check:checked {
+  background-color: var(--neon);
+}
+
+.delete {
+  color: #ff0000;
+  cursor: pointer;
+}
+
+.delete:hover {
+  scale: 1.2;
 }

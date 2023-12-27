@@ -11,7 +11,7 @@ const Home = () => {
     <main className={`${styles.main}`}>
       <h1>Lista de Tarefas</h1>
       <TodoForm />
-      {todos.length > 0 ? <TodoList /> : <h2>Lista de Tarefas Vazia!</h2>}
+      {todos.length > 0 ? <TodoList /> : <p>Lista de Tarefas Vazia!</p>}
     </main>
   )
 }
