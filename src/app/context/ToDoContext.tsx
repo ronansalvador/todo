@@ -22,7 +22,11 @@ const ToDoContext = createContext<ToDoContextProps>({
 })
 
 export const ToDoProvider = ({ children }: { children: React.ReactNode }) => {
-  const savedToDosString = localStorage.getItem('todos')
+  const isLocalStorageAvailable =
+    typeof window !== 'undefined' && window.localStorage
+  const savedToDosString = isLocalStorageAvailable
+    ? localStorage.getItem('todos')
+    : null
   const savedToDos = savedToDosString ? JSON.parse(savedToDosString) : []
   const [todos, setTodos] = useState<ToDo[]>(savedToDos)
 
@@ -30,7 +34,6 @@ export const ToDoProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const storedTodos = localStorage.getItem('todos')
     if (storedTodos) {
-      console.log('tem algum item?')
       setTodos(JSON.parse(storedTodos))
     }
   }, [])
