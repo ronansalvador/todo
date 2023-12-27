@@ -6,11 +6,12 @@
   padding-block: 2rem;
   min-height: 100vh;
   background-color: var(--black);
+  color: white;
 }
 
-.main h1,
-.main p {
-  color: white;
+.main h1 {
+  font-size: 1.3rem;
+  font-weight: 600;
 }
 
 .count_tasks {

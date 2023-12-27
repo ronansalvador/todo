@@ -6,7 +6,7 @@ import { ToDoProvider } from './context/ToDoContext'
 const nunito = Nunito_Sans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'ToDo',
+  title: 'To Do',
   description: 'Desafio Front End',
 }
 
