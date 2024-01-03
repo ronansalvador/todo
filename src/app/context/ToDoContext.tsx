@@ -26,10 +26,18 @@ const ToDoContext = createContext<ToDoContextProps>({
 export const ToDoProvider = ({ children }: { children: React.ReactNode }) => {
   const [todos, setTodos] = useState<ToDo[]>([])
 
-  // Salvar os todos no localStorage sempre que a lista de todos for atualizada
-  // useEffect(() => {
-  //   localStorage.setItem('todos', JSON.stringify(todos))
-  // }, [todos])
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const storedTodos = localStorage.getItem('todos')
+      if (storedTodos) {
+        setTodos(JSON.parse(storedTodos))
+      }
+    }
+  }, [setTodos])
+
+  const saveTodos = (todos: ToDo[]): void => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }
 
   const addTodo = (text: string) => {
     const newTodo: ToDo = {
@@ -40,7 +48,7 @@ export const ToDoProvider = ({ children }: { children: React.ReactNode }) => {
 
     setTodos((prevTodos) => {
       const updatedTodos = [...prevTodos, newTodo]
-      localStorage.setItem('todos', JSON.stringify(updatedTodos))
+      saveTodos(updatedTodos)
       return updatedTodos
     })
   }
@@ -50,7 +58,7 @@ export const ToDoProvider = ({ children }: { children: React.ReactNode }) => {
       const updatedTodos = prevTodos.map((todo) =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo,
       )
-      localStorage.setItem('todos', JSON.stringify(updatedTodos))
+      saveTodos(updatedTodos)
       return updatedTodos
     })
   }
@@ -58,7 +66,7 @@ export const ToDoProvider = ({ children }: { children: React.ReactNode }) => {
   const deleteTodo = (id: number) => {
     setTodos((prevTodos) => {
       const updatedTodos = prevTodos.filter((todo) => todo.id !== id)
-      localStorage.setItem('todos', JSON.stringify(updatedTodos))
+      saveTodos(updatedTodos)
       return updatedTodos
     })
   }

@@ -11,23 +11,9 @@ interface ToDo {
   completed: boolean
 }
 const Home = () => {
-  const { todos, setTodos } = useToDo()
+  const { todos } = useToDo()
   const done = todos.filter((todo) => todo.completed === true)
-  let savedToDos: ToDo[] = []
-  if (typeof window !== 'undefined') {
-    const savedToDosString = localStorage.getItem('todos')
-    savedToDos = savedToDosString ? JSON.parse(savedToDosString) : []
-  }
 
-  // Carregar os todos do localStorage quando o componente for montado
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const storedTodos = localStorage.getItem('todos')
-      if (storedTodos) {
-        setTodos(JSON.parse(storedTodos))
-      }
-    }
-  }, [setTodos])
   return (
     <main className={`${styles.main}`}>
       <h1>Lista de Tarefas</h1>
@@ -39,7 +25,7 @@ const Home = () => {
               Tarefas criadas: <span>{todos.length}</span>
             </p>
             <p>
-              Concluidas: <span>{`${done.length} de ${todos.length}`}</span>
+              Concluídas: <span>{`${done.length} de ${todos.length}`}</span>
             </p>
           </div>
           <TodoList />
