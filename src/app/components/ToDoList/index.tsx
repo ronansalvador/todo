@@ -10,12 +10,21 @@ interface Todo {
 }
 
 const TodoList = () => {
-  const { todos } = useToDo()
+  const { todos, setTodos, saveTodos } = useToDo()
   return (
     <div className={styles.list}>
       {todos.map((todo) => (
         <TodoItem key={todo.id} todo={todo} />
       ))}
+      <button
+        className={styles.clear_btn}
+        onClick={() => {
+          setTodos([])
+          saveTodos([])
+        }}
+      >
+        Limpar lista
+      </button>
     </div>
   )
 }

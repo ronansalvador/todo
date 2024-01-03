@@ -13,6 +13,7 @@ interface ToDoContextProps {
   addTodo: (text: string) => void
   toggleTodo: (id: number) => void
   deleteTodo: (id: number) => void
+  saveTodos: (todos: ToDo[]) => void
 }
 
 const ToDoContext = createContext<ToDoContextProps>({
@@ -21,6 +22,7 @@ const ToDoContext = createContext<ToDoContextProps>({
   addTodo: () => {},
   toggleTodo: () => {},
   deleteTodo: () => {},
+  saveTodos: () => {},
 })
 
 export const ToDoProvider = ({ children }: { children: React.ReactNode }) => {
@@ -72,7 +74,7 @@ export const ToDoProvider = ({ children }: { children: React.ReactNode }) => {
   }
   return (
     <ToDoContext.Provider
-      value={{ todos, addTodo, toggleTodo, deleteTodo, setTodos }}
+      value={{ todos, addTodo, toggleTodo, deleteTodo, setTodos, saveTodos }}
     >
       {children}
     </ToDoContext.Provider>
