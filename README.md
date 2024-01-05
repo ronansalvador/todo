@@ -7,13 +7,13 @@ Neste projeto, você encontra uma aplicação para controlar sua lista de tarefa
 Clone o repositório
 
 ```bash
-  git clone git@github.com:ronansalvador/todo.git
+git clone git@github.com:ronansalvador/todo.git
 ```
 
 Instale as dependências
 
 ```bash
-  npm install
+npm install
 ```
 
 ### Build
