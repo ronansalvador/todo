@@ -1,25 +1,14 @@
 import { useToDo } from '@/app/context/ToDoContext'
 import styles from './styles.module.css'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
+import { ToDoType } from '@/app/types'
 
 interface TodoItemProps {
-  todo: {
-    id: number
-    text: string
-    completed: boolean
-  }
+  todo: ToDoType
 }
 
 const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
   const { toggleTodo, deleteTodo } = useToDo()
-  const handleToggle = () => {
-    toggleTodo(todo.id)
-  }
-
-  const handleDelete = () => {
-    deleteTodo(todo.id)
-  }
-
   return (
     <div
       className={`${styles.task} ${
@@ -29,7 +18,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
       <input
         type="checkbox"
         checked={todo.completed}
-        onChange={handleToggle}
+        onChange={() => toggleTodo(todo.id)}
         className={styles.check}
       />
 
@@ -40,7 +29,10 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
         {todo.text}
       </span>
 
-      <DeleteForeverIcon onClick={handleDelete} className={styles.delete} />
+      <DeleteForeverIcon
+        onClick={() => deleteTodo(todo.id)}
+        className={styles.delete}
+      />
     </div>
   )
 }

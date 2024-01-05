@@ -1,19 +1,14 @@
 'use client'
 import React, { createContext, useContext, useState, useEffect } from 'react'
-
-interface ToDo {
-  id: number
-  text: string
-  completed: boolean
-}
+import { ToDoType } from '../types'
 
 interface ToDoContextProps {
-  todos: ToDo[]
-  setTodos: (todos: ToDo[]) => void
+  todos: ToDoType[]
+  setTodos: (todos: ToDoType[]) => void
   addTodo: (text: string) => void
   toggleTodo: (id: number) => void
   deleteTodo: (id: number) => void
-  saveTodos: (todos: ToDo[]) => void
+  saveTodos: (todos: ToDoType[]) => void
 }
 
 const ToDoContext = createContext<ToDoContextProps>({
@@ -26,7 +21,7 @@ const ToDoContext = createContext<ToDoContextProps>({
 })
 
 export const ToDoProvider = ({ children }: { children: React.ReactNode }) => {
-  const [todos, setTodos] = useState<ToDo[]>([])
+  const [todos, setTodos] = useState<ToDoType[]>([])
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -37,12 +32,12 @@ export const ToDoProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, [setTodos])
 
-  const saveTodos = (todos: ToDo[]): void => {
+  const saveTodos = (todos: ToDoType[]): void => {
     localStorage.setItem('todos', JSON.stringify(todos))
   }
 
   const addTodo = (text: string) => {
-    const newTodo: ToDo = {
+    const newTodo: ToDoType = {
       id: Date.now(),
       text,
       completed: false,
