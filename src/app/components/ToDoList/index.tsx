@@ -3,12 +3,6 @@ import TodoItem from '../ToDoItem'
 import { useToDo } from '@/app/context/ToDoContext'
 import styles from './styles.module.css'
 
-interface Todo {
-  id: number
-  text: string
-  completed: boolean
-}
-
 const TodoList = () => {
   const { todos, setTodos, saveTodos } = useToDo()
   return (
