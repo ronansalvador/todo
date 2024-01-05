@@ -4,12 +4,7 @@ import TodoList from './components/ToDoList'
 import TodoForm from './components/ToDoForm'
 import styles from './page.module.css'
 import { useToDo } from './context/ToDoContext'
-import { useEffect } from 'react'
-interface ToDo {
-  id: number
-  text: string
-  completed: boolean
-}
+
 const Home = () => {
   const { todos } = useToDo()
   const done = todos.filter((todo) => todo.completed === true)
