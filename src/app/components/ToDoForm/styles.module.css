@@ -12,8 +12,6 @@
   border: none;
   outline: none;
   border-radius: 1rem;
-  /* border-top-left-radius: 1rem;
-  border-bottom-left-radius: 1rem; */
   padding: 0.625rem;
   background-color: var(--light-sea-green);
   color: var(--dark-charcoal);
